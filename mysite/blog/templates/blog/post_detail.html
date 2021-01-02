@@ -3,7 +3,8 @@
 {% block content %}
 
   <div class="jumbotron">
-    <h1 class="posttitle">{{post.title}}</h1>
+      <div class="container">
+    <h1 class="posttitle">{{post.title|safe}}</h1>
     {% if post.published_date %}
     <div class="date postdate">
       {{ post.published_date }}
@@ -11,7 +12,7 @@
     {% else %}
     <a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-primary">Publish</a>
     {% endif %}
-    <p class="postcontent" >{{ post.title|safe|linebreaksbr }}</p>
+    <p class = "postcontent" ><strong>{{ post.title|safe|linebreaksbr }}</strong></p>
     <p>{{ post.text|safe|linebreaksbr }}</p>
 
 
@@ -23,26 +24,18 @@
     {% endif %}
 
     <hr>
-    <a class="btn btn-primary btn-comment" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
-
-    <div class="container">
+    <a class="btn btn-primary mr-auto loader" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+    <br>
       {% for comment in post.comments.all %}
       <br>
-      {% if comment.approved_comment %}
+      <!--{% if comment.approved_comment %}-->
 
       {{ comment.created_date }}
       <p>{{ comment.text|safe|linebreaks }}</p>
       <p>Posted by: <strong>{{ comment.author }}</strong></p>
-
-
-    {% endif %}
-    {% if user.is_authenticated and not comment.approved_comment %}
-        {{ comment.created_date }}
-        <p>{{ comment.text|safe|linebreaks }}</p>
-        <p>Posted by: <strong>{{ comment.author }}</strong></p>
-        <a class="btn btn-primary" href="{% url 'comment_remove' pk=comment.pk %}"><span class="fa fa-remove"></span></a>
-        <a class="btn btn-primary" href="{% url 'comment_approve' pk=comment.pk %}"><span class="fa fa-check"></span></a>
-    {% endif %}
+      {% if user.is_authenticated %}
+      <a class="btn btn-primary loader" href="{% url 'comment_remove' pk=comment.pk %}"><span class="fa fa-remove"></span></a>
+      {% endif %}
           {% empty %}
           <p>No comments posted.</p>
     {% endfor %}
