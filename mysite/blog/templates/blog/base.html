@@ -12,7 +12,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <!-- Alternative to Bootstrap 3 Glyphicons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
+{# title bar icon #}
+<link rel = "icon" href = "{% static 'img/B-logos_transparent.png' %}" type = "image/x-icon">
     <!-- Optional theme -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
 
@@ -46,8 +47,10 @@
         <a class="nav-link active" href="{% url 'post_new' %}">New Post</a>
         <a class="nav-link active" href="{% url 'post_draft_list' %}">Draft</a>
         <a class="nav-link active" href="{% url 'logout' %}">Logout!</a>
-        {% endif %}
+        {% else %}
         <a class="nav-link ml-auto" style = "color:#ffffff;" href="{% url 'login' %}"aria-label="Login"><span class="fa fa-user" aria-hidden="true"></span></a>
+
+        {% endif %}
       </div>
     </div>
   </nav>
