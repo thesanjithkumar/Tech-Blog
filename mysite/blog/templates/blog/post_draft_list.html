@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 {% extends './base.html' %}
 {% block content %}
-
-  {% for post in posts %}
+<h1>Draft List</h1>
+  {% for post in post_list %}
 
   <div class="post">
-    <p  class="date">Created : {{ post.created_date|date:'d-m-Y' }}</p>
+    <p  class="date">Created : {{ post.create_date|date:'d-m-Y' }}</p>
     <h1><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h1>
-    <p>{{ post.text|truncatechars:200 }}</p>
+    <!--<p>{{ post.text|linebreaksbr|truncatechars:200 }}</p>-->
   </div>
 
   {% endfor %}
