@@ -28,8 +28,6 @@
     <br>
       {% for comment in post.comments.all %}
       <br>
-      <!--{% if comment.approved_comment %}-->
-
       {{ comment.created_date }}
       <p>{{ comment.text|safe|linebreaks }}</p>
       <p>Posted by: <strong>{{ comment.author }}</strong></p>
