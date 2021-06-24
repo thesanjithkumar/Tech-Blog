@@ -22,7 +22,7 @@
     <a class="btn btn-outline-danger" href="{% url 'post_remove' pk=post.pk %}"><span class="fa fa-remove"></span></a>
 
     {% endif %}
-    {% if published_date %}
+    {% if post.published_date %}
     <hr>
     <a class="btn btn-primary mr-auto loader" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
     <br>
@@ -33,7 +33,7 @@
       <p>{{ comment.text|safe|linebreaks }}</p>
       <p>Posted by: <strong>{{ comment.author }}</strong></p>
       {% if user.is_authenticated %}
-      <a class="btn btn-primary loader" href="{% url 'comment_remove' pk=comment.pk %}"><span class="fa fa-remove"></span></a>
+      <a class="loader btn btn-primary " href="{% url 'comment_remove' pk=comment.pk %}"><span class="fa fa-remove"></span></a>
       {% endif %}
           {% empty %}
           <p>No comments posted.</p>
