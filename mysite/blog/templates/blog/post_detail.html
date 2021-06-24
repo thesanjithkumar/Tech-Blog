@@ -22,10 +22,11 @@
     <a class="btn btn-outline-danger" href="{% url 'post_remove' pk=post.pk %}"><span class="fa fa-remove"></span></a>
 
     {% endif %}
-
+    {% if published_date %}
     <hr>
     <a class="btn btn-primary mr-auto loader" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
     <br>
+    {% endif %}
       {% for comment in post.comments.all %}
       <br>
       {{ comment.created_date }}
